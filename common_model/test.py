@@ -1,5 +1,16 @@
-from model import CommonModel
+from .model import CommonModel
+
 import json
+
+
+class Commit(CommonModel):
+    def key_mapper(self):
+        mapper = {
+            'added': 'added',
+            'author_email': 'author.email',
+            'message': 'message'
+        }
+        return mapper
 
 
 class PushEventModel(CommonModel):
@@ -9,8 +20,9 @@ class PushEventModel(CommonModel):
 
     def key_mapper(self):
         mapper = {
-            'commits': 'commits',
-            
+            'after': 'after',
+            'commits': [Commit, 'commits'],
+            'head_commit': (Commit, 'head_commit'),
         }
         return mapper
 
@@ -165,6 +177,7 @@ def test():
 
     m = PushEventModel(j_raw)
     assert isinstance(m.commits, list)
+    print(m)
 
 
 if __name__ == '__main__':

@@ -69,14 +69,3 @@ class CommonModel(object):
                 traceback.print_exc()
                 final_value = None
             setattr(self, k_, final_value)
-
-
-# example
-class User(CommonModel):
-    def key_mapper(self):
-        mapper = {
-            'id': 'id',
-            'name': 'name',
-            'real_name': 'profile.real_name',
-        }
-        return mapper

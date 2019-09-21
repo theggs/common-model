@@ -3,6 +3,17 @@ from .model import CommonModel
 import json
 
 
+# example
+class User(CommonModel):
+    def key_mapper(self):
+        mapper = {
+            'id': 'id',
+            'name': 'name',
+            'real_name': 'profile.real_name',
+        }
+        return mapper
+
+
 class Commit(CommonModel):
     def key_mapper(self):
         mapper = {

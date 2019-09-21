@@ -59,7 +59,6 @@ class CommonModel(object):
         }
 
         mapper = self.key_mapper()
-        print('mapper', mapper)
         for k_, v_ in mapper.items():
             try:
                 handler = handler_map[type(v_)]
